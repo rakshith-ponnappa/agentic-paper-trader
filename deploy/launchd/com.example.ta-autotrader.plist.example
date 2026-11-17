@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Example launchd job. Copy it to ~/Library/LaunchAgents/com.example.ta-autotrader.plist, replace every
+  /path/to/... placeholder, then load it with:
+    launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.example.ta-autotrader.plist
+  Main daily run, Mon-Fri 10:00, 30 minutes after the US open. Times use the Mac's local time zone; the values below assume US Eastern time.
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.example.ta-autotrader</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>-lc</string>
+    <string>/path/to/agentic-paper-trader/scripts/run.sh --all</string>
+  </array>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>TA_PYTHON</key>
+    <string>/path/to/TradingAgents/.venv/bin/python</string>
+    <key>TA_ENV_FILE</key>
+    <string>/path/to/ta-env.sh</string>
+    <key>TA_HOME</key>
+    <string>/path/to/agentic-paper-trader-data</string>
+  </dict>
+  <key>StartCalendarInterval</key>
+  <array>
+    <dict><key>Weekday</key><integer>1</integer><key>Hour</key><integer>10</integer><key>Minute</key><integer>0</integer></dict>
+    <dict><key>Weekday</key><integer>2</integer><key>Hour</key><integer>10</integer><key>Minute</key><integer>0</integer></dict>
+    <dict><key>Weekday</key><integer>3</integer><key>Hour</key><integer>10</integer><key>Minute</key><integer>0</integer></dict>
+    <dict><key>Weekday</key><integer>4</integer><key>Hour</key><integer>10</integer><key>Minute</key><integer>0</integer></dict>
+    <dict><key>Weekday</key><integer>5</integer><key>Hour</key><integer>10</integer><key>Minute</key><integer>0</integer></dict>
+  </array>
+  <key>StandardOutPath</key>
+  <string>/tmp/com.example.ta-autotrader.out</string>
+  <key>StandardErrorPath</key>
+  <string>/tmp/com.example.ta-autotrader.err</string>
+</dict>
+</plist>

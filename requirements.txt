@@ -1,0 +1,11 @@
+# Runtime dependencies (Python 3.11+), taken from the imports in this repo.
+# TradingAgents is imported from its own install, not vendored (Apache-2.0).
+tradingagents @ git+https://github.com/TauricResearch/TradingAgents@v0.7.1
+openai>=1.40
+pandas>=3.0
+requests>=2.32
+urllib3>=2.0
+yfinance>=1.7
+# FinBERT news sentiment (ProsusAI/finbert through the transformers pipeline)
+torch>=2.2
+transformers>=4.40

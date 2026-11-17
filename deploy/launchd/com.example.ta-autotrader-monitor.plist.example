@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Example launchd job. Copy it to ~/Library/LaunchAgents/com.example.ta-autotrader-monitor.plist, replace every
+  /path/to/... placeholder, then load it with:
+    launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.example.ta-autotrader-monitor.plist
+  Stop-loss / take-profit guard every 15 minutes; it exits at once while the US market is closed.
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.example.ta-autotrader-monitor</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>-lc</string>
+    <string>/path/to/agentic-paper-trader/scripts/monitor.sh</string>
+  </array>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>TA_PYTHON</key>
+    <string>/path/to/TradingAgents/.venv/bin/python</string>
+    <key>TA_ENV_FILE</key>
+    <string>/path/to/ta-env.sh</string>
+    <key>TA_HOME</key>
+    <string>/path/to/agentic-paper-trader-data</string>
+  </dict>
+  <key>StartInterval</key>
+  <integer>900</integer>
+  <key>StandardOutPath</key>
+  <string>/tmp/com.example.ta-autotrader-monitor.out</string>
+  <key>StandardErrorPath</key>
+  <string>/tmp/com.example.ta-autotrader-monitor.err</string>
+</dict>
+</plist>

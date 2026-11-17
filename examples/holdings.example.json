@@ -1,0 +1,9 @@
+{
+  "_comment": "FAKE example portfolio for advise.py and hedge.py. Replace it with your own copy outside git.",
+  "cash": null,
+  "positions": [
+    {"ticker": "AAPL", "quantity": 10, "average_price": 150.0},
+    {"ticker": "MSFT", "quantity": 5, "average_price": 300.0},
+    {"ticker": "KO", "quantity": 20, "average_price": 55.0}
+  ]
+}

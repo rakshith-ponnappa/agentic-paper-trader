@@ -1,0 +1,7 @@
+# Offline unit tests. Only the light runtime dependencies are needed: TradingAgents, OpenAI,
+# transformers and torch are imported lazily inside the functions that use them.
+pytest>=8
+pandas>=3.0
+requests>=2.32
+urllib3>=2.0
+yfinance>=1.7
